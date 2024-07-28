@@ -197,7 +197,7 @@ static bool EnterPINForProcess(HANDLE hProcess, const std::wstring& strPin)
 
 		// Initialize automation handle
 		CComPtr<IUIAutomation> automation;
-		if(SUCCEEDED(automation.CoCreateInstance(CLSID_CUIAutomation8))) {
+		if(SUCCEEDED(automation.CoCreateInstance(CLSID_CUIAutomation))) {
 
 			// Save automation pointer in structure
 			data.pAutomation = automation;
