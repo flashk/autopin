@@ -2,7 +2,7 @@
 
 ![autopin](https://github.com/user-attachments/assets/aed70eaf-6245-4c08-aaa5-fdc3a917ce0c)
 
-`autopin` is a lightweight Windows command line tool that can be used to automatically enter the PIN when using `signtool` to sign files with a hardware key (e.g. Yubikey). This allows for unattended builds when signing many files. I created this after being unsatisfied with the other solutions I found. Some were closed source binaries or required installing entire applications for automation.
+`autopin` is a lightweight Windows command line tool that can be used to automatically enter the PIN when using `signtool` to sign files with a hardware key (e.g. Yubikey). This allows for unattended builds when signing many files. I created this after being unsatisfied with the other solutions I found. Some were closed source binaries or required significant changes to my existing workflow for signing files. `autopin` can be used to easily update existing workflows that use `signtool`.
 
 ## Usage
 ```
