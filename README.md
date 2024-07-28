@@ -6,7 +6,12 @@
 
 ## Usage
 ```
-autopin 123456 path/to/signtool.exe [signtool args]
+autopin [pin] [signtool_path] [signtool_args...]
+```
+
+Example:
+```
+autopin 123456 signtool.exe sign /sha1 thumbprint /fd SHA256 /t http://timestamp.digicert.com myapp.exe
 ```
 
 ## How it works
