@@ -271,10 +271,16 @@ int wmain()
 	// Enter PIN into first detected password field belonging to process
 	EnterPINForProcess(pi.hProcess, signPin);
 
-	// Wait for process to finish and close handles
+	// Wait for process to finish
 	WaitForSingleObject(pi.hProcess, INFINITE);
+	
+	// Get process exit code
+	DWORD dwExitCode = 0;
+	GetExitCodeProcess(pi.hProcess, &dwExitCode);
+
+	// Close process handles
 	CloseHandle(pi.hThread);
 	CloseHandle(pi.hProcess);
 
-	return 0;
+	return dwExitCode;
 }
