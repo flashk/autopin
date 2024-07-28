@@ -140,7 +140,7 @@ static BOOL CALLBACK FindPinWindowProc(HWND hWnd, LPARAM lParam)
 	// Create condition for password property
 	CComVariant isPassword(true);
 	CComPtr<IUIAutomationCondition> conditionPassword;
-    if(FAILED(data->pAutomation->CreatePropertyCondition(UIA_IsPasswordPropertyId, isPassword, &conditionPassword))) {
+	if(FAILED(data->pAutomation->CreatePropertyCondition(UIA_IsPasswordPropertyId, isPassword, &conditionPassword))) {
 		return TRUE;
 	}
 
@@ -226,21 +226,21 @@ static bool EnterPINForProcess(HANDLE hProcess, const std::wstring& strPin)
 
 int wmain()
 {
-    // Make sure we have enough arguments
-    if(__argc < 3) {
+	// Make sure we have enough arguments
+	if(__argc < 3) {
 		std::cerr << "Usage: autopin [pin] [command]" << std::endl;
-        return 1;
-    }
+		return 1;
+	}
 
-    // Get PIN from arguments
-    std::wstring signPin = __wargv[1];
+	// Get PIN from arguments
+	std::wstring signPin = __wargv[1];
 
-    // Create command line from remaining arguments
-    std::wostringstream ssCmdLine;
+	// Create command line from remaining arguments
+	std::wostringstream ssCmdLine;
 	for(int i = 2; i < __argc; ++i) {
 		ssCmdLine << L"\"" << __wargv[i] << L"\" ";
 	}
-    std::wstring strCmdLine = ssCmdLine.str();
+	std::wstring strCmdLine = ssCmdLine.str();
 
 	// Spawn requested process
 	STARTUPINFO si;
@@ -264,17 +264,17 @@ int wmain()
 					&pi);
 
 	if(!bCreated) {
-        std::cerr << "Could not create process: " << GetLastError() << std::endl;
+		std::cerr << "Could not create process: " << GetLastError() << std::endl;
 		return 1;
 	}
 
 	// Enter PIN into first detected password field belonging to process
 	EnterPINForProcess(pi.hProcess, signPin);
 
-    // Wait for process to finish and close handles
-    WaitForSingleObject(pi.hProcess, INFINITE);
+	// Wait for process to finish and close handles
+	WaitForSingleObject(pi.hProcess, INFINITE);
 	CloseHandle(pi.hThread);
 	CloseHandle(pi.hProcess);
 
-    return 0;
+	return 0;
 }
